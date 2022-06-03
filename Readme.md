@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
-* Студент: [Tatiana Mozoleva](https://up.htmlacademy.ru/javascript/26/user/505199).
-* Наставник: `Неизвестно`.
+- Студент: [Tatiana Mozoleva](https://up.htmlacademy.ru/javascript/26/user/505199).
+- Наставник: [Михаил Карямин](https://htmlacademy.ru/profile/id959581).
 
 ---
 
