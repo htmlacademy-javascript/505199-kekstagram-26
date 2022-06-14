@@ -14,9 +14,9 @@ const checkStringLength = function (currentString, maxLength) {
 
 checkStringLength('she sells seashels', 20);
 
-const getShuffleArray = (array) => {
-  array.sort(() => Math.random() - 0.5);
-};
+// const getShuffleArray = (array) => {
+//   array.sort(() => Math.random() - 0.5);
+// };
 
 ///
 const POSTS_AMOUNT = 25;
@@ -54,7 +54,7 @@ const PHOTO_DESCRIPTIONS = [
 
 // Создание содержания комментария
 
-const createCommentsContent = (_, index) => {
+const createCommentsContent = (index) => {
   return {
     id: getRandomInt(1, 100),
     avatar: `img/avatar-${getRandomInt(
@@ -67,7 +67,7 @@ const createCommentsContent = (_, index) => {
 };
 
 // Генерация поста
-const generatePost = (item, index) => {
+const generatePost = (index) => {
   //let postId = index + 1;
 
   return {
@@ -76,7 +76,9 @@ const generatePost = (item, index) => {
     description:
       PHOTO_DESCRIPTIONS[getRandomInt(0, PHOTO_DESCRIPTIONS.length - 1)],
     likes: getRandomInt(15, 200),
-    comments: Array.from({ length: getRandomInt(0, 6) }, createCommentsContent),
+    comments: Array.from({ length: getRandomInt(0, 6) }, (_, i) =>
+      createCommentsContent(i)
+    ),
   };
 };
 
@@ -85,3 +87,4 @@ const generatePost = (item, index) => {
 const generatePosts = () =>
   Array.from({ length: POSTS_AMOUNT }, (_, i) => generatePost(i));
 const posts = generatePosts();
+console.log(posts);
