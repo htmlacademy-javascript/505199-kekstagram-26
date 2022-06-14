@@ -82,6 +82,9 @@ const generatePost = (item, index) => {
 
 // Генерация массива постов
 
-const generatePosts = () =>
-  Array.from({ length: POSTS_AMOUNT }, (_, i) => generatePost(i));
+const generatePosts = (_, index) => {
+  return Array.from({ length: POSTS_AMOUNT }, generatePost);
+};
 const posts = generatePosts();
+const post = generatePost();
+console.log(posts);
