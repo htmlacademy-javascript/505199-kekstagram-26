@@ -37,35 +37,34 @@ const PHOTO_DESCRIPTIONS = [
 
 // Создание содержания комментария
 
-const createCommentsContent = (index) => {
-  return {
-    id: getRandomInt(1, 100),
-    avatar: `img/avatar-${getRandomInt(
-      MIN_AVATAR_NUMBER,
-      MAX_AVATAR_NUMBER
-    )}.svg`,
-    message: USERS_COMMENTS[getRandomInt(0, USERS_COMMENTS.length - 1)],
-    name: USERS_NAMES[getRandomInt(0, USERS_NAMES.length - 1)],
-  };
-};
+const createCommentsContent = () => ({
+  id: getRandomInt(1, 100),
+  avatar: `img/avatar-${getRandomInt(
+    MIN_AVATAR_NUMBER,
+    MAX_AVATAR_NUMBER
+  )}.svg`,
+  message: USERS_COMMENTS[getRandomInt(0, USERS_COMMENTS.length - 1)],
+  name: USERS_NAMES[getRandomInt(0, USERS_NAMES.length - 1)],
+});
 
 // Генерация поста
-const generatePost = (index) => {
-  return {
-    id: index + 1,
-    url: `photos/${index + 1}.jpg`,
-    description:
-      PHOTO_DESCRIPTIONS[getRandomInt(0, PHOTO_DESCRIPTIONS.length - 1)],
-    likes: getRandomInt(15, 200),
-    comments: Array.from({ length: getRandomInt(0, 6) }, (_, i) =>
-      createCommentsContent(i)
-    ),
-  };
-};
+const generatePost = (index) => ({
+  id: index + 1,
+  url: `photos/${index + 1}.jpg`,
+  description:
+    PHOTO_DESCRIPTIONS[getRandomInt(0, PHOTO_DESCRIPTIONS.length - 1)],
+  likes: getRandomInt(15, 200),
+  comments: Array.from({ length: getRandomInt(0, 6) }, (_, i) =>
+    createCommentsContent(i)
+  ),
+});
 
 // Генерация массива постов
 
 const generatePosts = () =>
   Array.from({ length: POSTS_AMOUNT }, (_, i) => generatePost(i));
+
+// const posts = generatePosts();
+// console.log(posts);
 
 export { generatePosts };
