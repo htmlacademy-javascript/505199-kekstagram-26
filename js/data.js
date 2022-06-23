@@ -64,7 +64,7 @@ const generatePost = (index) => ({
 const generatePosts = () =>
   Array.from({ length: POSTS_AMOUNT }, (_, i) => generatePost(i));
 
-// const posts = generatePosts();
-// console.log(posts);
+// const userPosts = generatePosts();
+// console.log(userPosts);
 
 export { generatePosts };
