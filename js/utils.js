@@ -18,4 +18,8 @@ const checkStringLength = function (currentString, maxLength) {
 
 checkStringLength('she sells seashels', 20);
 
-export { getRandomInt, checkStringLength };
+// Функция прерывания или закрытия текущего процесса
+
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+export { getRandomInt, checkStringLength, isEscapeKey };

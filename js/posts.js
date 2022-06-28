@@ -1,3 +1,5 @@
+import { showFullSizePicture } from './fullsize-images.js';
+
 const renderPosts = (userPosts) => {
   const usersPhotos = document.querySelector('.pictures');
 
@@ -21,6 +23,10 @@ const renderPosts = (userPosts) => {
       userPost.likes;
 
     photoGalleryFragment.append(userPhotoElement);
+
+    userPhotoElement.addEventListener('click', () => {
+      showFullSizePicture(userPost);
+    });
   });
   usersPhotos.append(photoGalleryFragment);
 };
