@@ -1,7 +1,7 @@
 import { checkStringLength, isEscapeKey } from './utils.js';
 import { openMessagePopup } from './message-popup.js';
-import { closeEditImagePopup } from './upload-image.js';
 import { sendData } from './api.js';
+import { closeEditImagePopup } from './upload-image.js';
 
 const COMMENTS_MAX_LENGTH = 140;
 const HASHTAGS_MAX_AMOUNT = 5;
@@ -15,7 +15,7 @@ const hashtagsInput = uploadImageForm.querySelector('.text__hashtags');
 
 const commentsInput = uploadImageForm.querySelector('.text__description');
 
-const uploadSubmitButton = uploadImageForm.querySelector('upload-submit');
+const uploadSubmitButton = uploadImageForm.querySelector('#upload-submit');
 
 //Блокировка кнопки формы
 
@@ -32,10 +32,10 @@ const unBlockSubmitButton = () => {
 };
 
 const pristine = new Pristine(uploadImageForm, {
-  classTo: 'img - upload__field - wrapper',
-  errorTextParent: 'img - upload__field - wrapper',
-  errorClass: 'img-upload__text--invalid',
-  successClass: 'img-upload__text--valid',
+  classTo: 'img-upload__field-wrapper',
+  errorClass: 'is-invalid',
+  successClass: 'is-valid',
+  errorTextParent: 'img-upload__field-wrapper',
   errorTextTag: 'div',
   errorTextClass: 'error-text',
 });
@@ -113,6 +113,7 @@ const validateIsDuplicateHashtags = (value) => {
 };
 
 // Функция проверки длинны комментария
+
 const validateComment = (value) =>
   checkStringLength(value, COMMENTS_MAX_LENGTH);
 
@@ -201,6 +202,7 @@ uploadImageForm.addEventListener('submit', (evt) => {
 });
 
 // Отмена закрытия модального окна, фокус в поле ввода хеш-тегов
+
 hashtagsInput.addEventListener('keydown', (evt) => {
   if (isEscapeKey(evt)) {
     evt.stopPropagation();
@@ -208,6 +210,7 @@ hashtagsInput.addEventListener('keydown', (evt) => {
 });
 
 // Отмена закрытия модального окна, фокус в поле ввода комментариев
+
 commentsInput.addEventListener('keydown', (evt) => {
   if (isEscapeKey(evt)) {
     evt.stopPropagation();
