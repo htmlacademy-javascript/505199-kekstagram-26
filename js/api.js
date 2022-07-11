@@ -1,4 +1,4 @@
-import { createAlertMessage } from './message-popup';
+import { createAlertMessage } from './message-popup.js';
 
 const API_ADDRESS = 'https://26.javascript.pages.academy/kekstagram';
 

@@ -1,5 +1,12 @@
-import { generatePosts } from './data.js';
+import { getData } from './api.js';
+import { initPostsFilter, disableFilterPosts } from './filter-editor.js';
 import { renderPosts } from './posts.js';
+import './upload-image.js';
+import './form.js';
 
-const userPosts = generatePosts();
-renderPosts(userPosts);
+disableFilterPosts();
+
+getData((posts) => {
+  renderPosts(posts);
+  initPostsFilter(posts);
+});

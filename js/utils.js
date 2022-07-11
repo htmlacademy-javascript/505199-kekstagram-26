@@ -22,4 +22,33 @@ checkStringLength('she sells seashels', 20);
 
 const isEscapeKey = (evt) => evt.key === 'Escape';
 
-export { getRandomInt, checkStringLength, isEscapeKey };
+// Функция устранения 'дребезга' при переключении фильтра
+
+const debounce = (callback, timeoutDelay = 500) => {
+  let timeoutId;
+  return (...rest) => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+  };
+};
+
+const getShuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
+
+const randomIntegersBetweenRange = (from, to, resultsLimit) => {
+  const range = Math.abs(from - to);
+  if (!range) {
+    return [];
+  }
+  const resultsCount = Math.min(range, resultsLimit);
+  const minValue = Math.min(from, to);
+  const values = Array.from({ length: range }, (_, index) => minValue + index);
+  return getShuffleArray(values).splice(0, resultsCount);
+};
+
+export {
+  getRandomInt,
+  checkStringLength,
+  isEscapeKey,
+  debounce,
+  randomIntegersBetweenRange,
+};

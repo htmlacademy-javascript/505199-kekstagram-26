@@ -1408,3 +1408,17 @@ main {
 .hidden {
   display: none;
 }
+
+
+/**
+ * Ошибка при валидации хэш-тегов, комментариев
+ */
+
+ .pristine-error.error-text {
+  text-transform: none;
+  margin-top: 0;
+}
+
+.is-invalid {
+  color: red;
+}
