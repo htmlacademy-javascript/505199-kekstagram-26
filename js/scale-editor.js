@@ -23,7 +23,8 @@ const imageUploadPreview = imagePreviewContainer.querySelector(
   '.img-upload__preview img'
 );
 
-//Уменьшение масштаба
+// Уменьшение масштаба
+
 const decreaseScale = () => {
   let scale = parseInt(scaleControlValue.value, 10);
   if (scale > MIN_SCALE) {
@@ -33,7 +34,7 @@ const decreaseScale = () => {
   }
 };
 
-//Увеличение масштаба
+// Увеличение масштаба
 
 const increaseScale = () => {
   let scale = parseInt(scaleControlValue.value, 10);

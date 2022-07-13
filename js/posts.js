@@ -3,7 +3,7 @@ import { showFullSizePicture } from './fullsize-images.js';
 const renderPosts = (userPosts) => {
   const usersPhotos = document.querySelector('.pictures');
 
-  //шаблон для данных фотографий от случайных пользователей
+  // Шаблон для данных фотографий от случайных пользователей
 
   const userPhotoTemplate = document
     .querySelector('#picture')

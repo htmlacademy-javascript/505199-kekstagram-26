@@ -2,12 +2,14 @@ import { isEscapeKey } from './utils.js';
 
 const ALERT_SHOW_TIME = 5000;
 
-//Шаблон сообщения о неудачной загрузки изображения
+// Шаблон сообщения о неудачной загрузки изображения
+
 const errorUploadTemplate = document.body
   .querySelector('#error')
   .content.querySelector('.error');
 
 // Шаблон сообщения об успешной загрузки
+
 const successUploadTemplate = document.body
   .querySelector('#success')
   .content.querySelector('.success');
@@ -43,7 +45,7 @@ const openMessagePopup = (popupType) => {
     }
   };
 
-  //Функция, проверяющая клик вне области
+  // Функция, проверяющая клик вне области
   const onOutsideClick = (evt) => {
     const isOutsideClick = !evt.composedPath().includes(innerPopupSection);
     if (isOutsideClick) {
@@ -52,6 +54,7 @@ const openMessagePopup = (popupType) => {
   };
 
   // Функция закрытия сообщения об успешной/ошибочной загрузки
+
   function closeMessagePopup() {
     popupButton.removeEventListener('click', closeMessagePopup);
     document.removeEventListener('keydown', onMessagePopupEsc);

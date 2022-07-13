@@ -48,6 +48,7 @@ const createCommentsContent = () => ({
 });
 
 // Генерация поста
+
 const generatePost = (index) => ({
   id: index + 1,
   url: `photos/${index + 1}.jpg`,
