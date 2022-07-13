@@ -1,7 +1,7 @@
 import { isEscapeKey } from './utils.js';
 import { openMessagePopup } from './message-popup.js';
 import { addScaleHandler, removeScaleHandler } from './scale-editor.js';
-import { onChangeImageEffect, onChangeEffectValue } from './slider-effects.js';
+import { onChangeImageEffect } from './slider-effects.js';
 import { uploadFormValidate } from './form.js';
 
 const IMAGE_SCALE = 100;
@@ -69,26 +69,6 @@ function openEditImagePopup() {
   addScaleHandler();
 
   document.addEventListener('keydown', onEditPopupEsc);
-
-  const uiSlider = noUiSlider.create(effectLevelSlider, {
-    range: { min: 0, max: 1 },
-    start: 1,
-    step: 0.1,
-    connect: 'lower',
-    format: {
-      to: function (value) {
-        if (Number.isInteger(value)) {
-          return value.toFixed(0);
-        }
-        return value.toFixed(1);
-      },
-      from: function (value) {
-        return parseFloat(value);
-      },
-    },
-  });
-
-  uiSlider.on('update', onChangeEffectValue);
 
   imageEffects.addEventListener('change', onChangeImageEffect);
 
