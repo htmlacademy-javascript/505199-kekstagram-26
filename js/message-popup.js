@@ -76,8 +76,8 @@ const createAlertMessage = () => {
   alertContainer.style.left = 0;
   alertContainer.style.top = 0;
   alertContainer.style.right = 0;
-  alertContainer.style.padding = '10px 10px';
-  alertContainer.style.fontSize = '30px';
+  alertContainer.style.padding = '15px 15px';
+  alertContainer.style.fontSize = '26px';
   alertContainer.style.textAlign = 'center';
   alertContainer.style.backgroundColor = 'yellow';
   alertContainer.style.color = 'blue';
