@@ -28,9 +28,11 @@ const enableFilterPosts = () => {
   });
 };
 
+// Фотографии в изначальном порядке с сервера
+
 const filterPostsDefault = (userPosts) => userPosts;
 
-// Сортировка постов пользователей по количеству комментариев (самые обсуждаемые в начале)
+// Фотографии, отсортированные в порядке убывания количества комментариев
 
 const filterPostsDiscuss = (userPosts) =>
   userPosts
@@ -40,7 +42,8 @@ const filterPostsDiscuss = (userPosts) =>
         commentB.comments.length - commentA.comments.length
     );
 
-//
+// Случайные, не повторяющиеся фотографии
+
 const filterPostsRandom = (posts, maxCount) => {
   const startIndex = 0;
   const lastIndex = posts.length - 1;
