@@ -5,6 +5,10 @@ import { onChangeImageEffect, onChangeEffectValue } from './slider-effects.js';
 import { uploadFormValidate } from './form.js';
 
 const IMAGE_SCALE = 100;
+const MIN_SLIDER_RANGE = 0;
+const MAX_SLIDER_RANGE = 1;
+const SLIDER_START = 1;
+const SLIDER_STEP = 0.1;
 
 const imageUpload = document.body.querySelector('.img-upload');
 
@@ -72,9 +76,9 @@ function openEditImagePopup() {
   document.addEventListener('keydown', onEditPopupEsc);
 
   const uiSlider = noUiSlider.create(effectLevelSlider, {
-    range: { min: 0, max: 1 },
-    start: 1,
-    step: 0.1,
+    range: { min: MIN_SLIDER_RANGE, max: MAX_SLIDER_RANGE },
+    start: SLIDER_START,
+    step: SLIDER_STEP,
     connect: 'lower',
     format: {
       to: function (value) {
