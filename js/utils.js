@@ -32,7 +32,11 @@ const debounce = (callback, timeoutDelay = 500) => {
   };
 };
 
+// Функция перетасовки массива
+
 const getShuffleArray = (array) => [...array].sort(() => Math.random() - 0.5);
+
+// Функция получения случайных уникальных чисел в допустимом диапазоне
 
 const randomIntegersBetweenRange = (from, to, resultsLimit) => {
   const range = Math.abs(from - to);

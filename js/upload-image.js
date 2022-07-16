@@ -1,10 +1,14 @@
 import { isEscapeKey } from './utils.js';
 import { openMessagePopup } from './message-popup.js';
 import { addScaleHandler, removeScaleHandler } from './scale-editor.js';
-import { onChangeImageEffect } from './slider-effects.js';
+import { onChangeImageEffect, onChangeEffectValue } from './slider-effects.js';
 import { uploadFormValidate } from './form.js';
 
 const IMAGE_SCALE = 100;
+const MIN_SLIDER_RANGE = 0;
+const MAX_SLIDER_RANGE = 1;
+const SLIDER_START = 1;
+const SLIDER_STEP = 0.1;
 
 const imageUpload = document.body.querySelector('.img-upload');
 
@@ -25,7 +29,7 @@ const effectLevelSlider = imageUpload.querySelector('.effect-level__slider');
 const imageEffects = document.querySelector('.img-upload__effects');
 const imageLevelEffect = document.querySelector('.img-upload__effect-level');
 
-//Все данные, введённые в форму, и контрол фильтра приходят в исходное состояние:
+// Все данные, введённые в форму, и контрол фильтра приходят в исходное состояние:
 
 const clearUserEnterData = () => {
   scaleControl.value = `${IMAGE_SCALE}%`;
@@ -36,7 +40,8 @@ const clearUserEnterData = () => {
   imageUploadPreview.src = '';
 };
 
-//Форма редактирования изображения закрывается
+// Форма редактирования изображения закрывается
+
 const closeEditImagePopup = () => {
   imageUploadPopup.classList.add('hidden');
   document.body.classList.remove('modal-open');
@@ -50,7 +55,7 @@ const closeEditImagePopup = () => {
   clearUserEnterData();
 };
 
-//Форма редактирования изображения открывается
+// Форма редактирования изображения открывается
 
 function openEditImagePopup() {
   const file = this.files[0];
@@ -69,6 +74,26 @@ function openEditImagePopup() {
   addScaleHandler();
 
   document.addEventListener('keydown', onEditPopupEsc);
+
+  const uiSlider = noUiSlider.create(effectLevelSlider, {
+    range: { min: MIN_SLIDER_RANGE, max: MAX_SLIDER_RANGE },
+    start: SLIDER_START,
+    step: SLIDER_STEP,
+    connect: 'lower',
+    format: {
+      to: function (value) {
+        if (Number.isInteger(value)) {
+          return value.toFixed(0);
+        }
+        return value.toFixed(1);
+      },
+      from: function (value) {
+        return parseFloat(value);
+      },
+    },
+  });
+
+  uiSlider.on('update', onChangeEffectValue);
 
   imageEffects.addEventListener('change', onChangeImageEffect);
 

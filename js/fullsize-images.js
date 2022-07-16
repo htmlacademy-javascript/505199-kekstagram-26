@@ -70,6 +70,7 @@ function getMoreComments() {
 }
 
 // Функция показа полноразмерных фотографий
+
 const showFullSizePicture = (post) => {
   bigPictureContainer.classList.remove('hidden');
   document.body.classList.add('modal-open');

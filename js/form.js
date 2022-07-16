@@ -45,7 +45,7 @@ const uploadFormValidate = () => {
 };
 
 // Хэш-теги:
-// хэш-тег начинается с символа # (решётка);
+// Хэш-тег начинается с символа # (решётка);
 const checkHashtagPrefixs = (value) => {
   if (value === '') {
     return true;
@@ -57,11 +57,10 @@ const checkHashtagPrefixs = (value) => {
     .every((word) => word.startsWith('#'));
 };
 
-//
+// Проверка хэш-тегов на основе регулярного выражения
+
 const checkIsValidHashtag = (arrayItem) =>
   hashtagValidateRegExp.test(arrayItem);
-
-// Проверка хэштэгов на основе регулярного выражения
 
 const checkIsValidHashtags = (value) => {
   if (value === '') {
@@ -73,14 +72,17 @@ const checkIsValidHashtags = (value) => {
     .filter((word) => word !== '')
     .every(checkIsValidHashtag);
 };
-//Нельзя указать больше пяти хэш-тегов
+
+// Нельзя указать больше пяти хэш-тегов
+
 const checkHashtagsCount = (value) =>
   value
     .trim()
     .split(' ')
     .filter((word) => word !== '').length <= HASHTAGS_MAX_AMOUNT;
 
-//Хэш-теги разделяются пробелами;
+// Хэш-теги разделяются пробелами
+
 const checkEmptyTags = (value) => {
   if (value === '') {
     return true;
@@ -91,7 +93,7 @@ const checkEmptyTags = (value) => {
     .some((word) => word === '');
 };
 
-//Максимальная длина одного хэш-тега 20 символов
+// Максимальная длина одного хэш-тега 20 символов
 
 const checkHashtagLength = (value) =>
   value.split(' ').every((hashtag) => hashtag.length <= HASHTAGS_MAX_LENGTH);
