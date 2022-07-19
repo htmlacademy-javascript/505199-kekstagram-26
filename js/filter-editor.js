@@ -1,5 +1,5 @@
 import { renderPosts } from './posts.js';
-import { debounce, randomIntegersBetweenRange } from './utils.js';
+import { debounce, getRandomIntBetweenRange } from './utils.js';
 
 const POST_MAX_COUNT = 10;
 
@@ -48,7 +48,7 @@ const filterPostsRandom = (posts, maxCount) => {
   const startIndex = 0;
   const lastIndex = posts.length - 1;
   const elementsCount = Math.min(posts.length, maxCount);
-  const randomPostsIndexes = randomIntegersBetweenRange(
+  const randomPostsIndexes = getRandomIntBetweenRange(
     startIndex,
     lastIndex,
     elementsCount

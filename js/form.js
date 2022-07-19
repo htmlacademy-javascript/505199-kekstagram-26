@@ -195,7 +195,6 @@ uploadImageForm.addEventListener('submit', (evt) => {
   };
 
   const onError = () => {
-    closeEditImagePopup();
     unBlockSubmitButton();
     openMessagePopup('error');
   };

@@ -32,6 +32,8 @@ const renderComments = (comments) => {
   if (!comments.length) {
     return;
   }
+
+  socialCommentsContainer.innerHTML = '';
   const commentFragment = document.createDocumentFragment();
 
   comments.forEach((comment) => {
@@ -59,15 +61,23 @@ const hideCommentsLoader = () => {
 
 // Функция загрузки дополнительных комментариев
 
-function getMoreComments() {
+let countLoadedComments = 0;
+
+const getMoreComments = () => {
   showCommentsLoader();
-  renderComments(copyComments.splice(0, COMMENTS_LIMIT));
-  socialCommentCount.textContent =
-    document.querySelectorAll('.social__comment').length;
-  if (!copyComments.length) {
+
+  const commentsForRender = copyComments.slice(
+    0,
+    countLoadedComments + COMMENTS_LIMIT
+  );
+  renderComments(commentsForRender);
+
+  countLoadedComments = commentsForRender.length;
+  socialCommentCount.textContent = `${countLoadedComments} из ${copyComments.length} комментариев`;
+  if (copyComments.length <= countLoadedComments) {
     hideCommentsLoader();
   }
-}
+};
 
 // Функция показа полноразмерных фотографий
 
@@ -89,6 +99,7 @@ const showFullSizePicture = (post) => {
 // Функция закрытия окна полноразмерного изображения
 
 const onHideFullSizePicture = () => {
+  countLoadedComments = 0;
   bigPictureContainer.classList.add('hidden');
   document.body.classList.remove('modal-open');
 
