@@ -46,6 +46,7 @@ const openMessagePopup = (popupType) => {
   };
 
   // Функция, проверяющая клик вне области
+
   const onOutsideClick = (evt) => {
     const isOutsideClick = !evt.composedPath().includes(innerPopupSection);
     if (isOutsideClick) {

@@ -30,7 +30,7 @@ const sendData = async (formData, onSuccess, onError) => {
     if (response.ok) {
       onSuccess();
     } else {
-      throw new Error(`${response.status} = ${response.statusText}`);
+      onError();
     }
   } catch (error) {
     onError();
